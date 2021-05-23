@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'Liberation Sans'; font-size:8pt; font-weight:400; font-style:normal;">
+<table style="-qt-table-type: root; margin-top:57px; margin-bottom:57px; margin-left:57px; margin-right:57px;">
+<tr>
+<td style="border: none;">
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:24pt; color:#000000;">Tutorial:</span></p>
+<p align="center" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:24pt; color:#000000;">Lexer rules 2</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:24pt; color:#000000;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">This doc shows how to configure syntax-tree support («Syntax tree» panel in SynWrite) for lexers. See ready lexer: Julia, install it via «Addons manager» in SynWrite.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">Example of Julia source text</span></p>
+<table border="1" cellspacing="2">
+<tr>
+<td width="481.891">
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">function</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">Base</span><span style=" font-size:10pt; font-weight:600; color:#800000;">.</span><span style=" font-size:10pt; color:#000000;">sort</span><span style=" font-size:10pt; font-weight:600; color:#800000;">!(</span><span style=" font-size:10pt; color:#000000;">v</span><span style=" font-size:10pt; font-weight:600; color:#800000;">::</span><span style=" font-size:10pt; color:#000080;">AbstractVector</span><span style=" font-size:10pt; font-weight:600; color:#800000;">,</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">lo</span><span style=" font-size:10pt; font-weight:600; color:#800000;">::</span><span style=" font-size:10pt; color:#000080;">Int</span><span style=" font-size:10pt; font-weight:600; color:#800000;">,</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">hi</span><span style=" font-size:10pt; font-weight:600; color:#800000;">::</span><span style=" font-size:10pt; color:#000080;">Int</span><span style=" font-size:10pt; font-weight:600; color:#800000;">)</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">while</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#000000;">true</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; color:#000000;">clean</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">=</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#000000;">true</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">for</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">i</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">=</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#000080;">0</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-style:italic; color:#808080;">#skipp</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">if</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">Sort</span><span style=" font-size:10pt; font-weight:600; color:#800000;">.</span><span style=" font-size:10pt; color:#000000;">lt</span><span style=" font-size:10pt; font-weight:600; color:#800000;">(</span><span style=" font-size:10pt; color:#000000;">o</span><span style=" font-size:10pt; font-weight:600; color:#800000;">,</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">v</span><span style=" font-size:10pt; font-weight:600; color:#800000;">[</span><span style=" font-size:10pt; color:#000000;">i</span><span style=" font-size:10pt; font-weight:600; color:#800000;">+</span><span style=" font-size:10pt; font-weight:600; color:#000080;">1</span><span style=" font-size:10pt; font-weight:600; color:#800000;">],</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">v</span><span style=" font-size:10pt; font-weight:600; color:#800000;">[</span><span style=" font-size:10pt; color:#000000;">i</span><span style=" font-size:10pt; font-weight:600; color:#800000;">])</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; color:#000000;">clean</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">=</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#000000;">false</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; color:#000000;">clean</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">&amp;&amp;</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#000000;">break</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">return</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">v</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;"></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">macro</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">enum</span><span style=" font-size:10pt; font-weight:600; color:#800000;">(</span><span style=" font-size:10pt; color:#000000;">T</span><span style=" font-size:10pt; font-weight:600; color:#800000;">,</span><span style=" font-size:10pt; color:#000000;">syms</span><span style=" font-size:10pt; font-weight:600; color:#800000;">...)</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; color:#000000;">blk</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">=</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#000000;">quote</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">immutable</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">$(</span><span style=" font-size:10pt; color:#000000;">esc</span><span style=" font-size:10pt; font-weight:600; color:#800000;">(</span><span style=" font-size:10pt; color:#000000;">T</span><span style=" font-size:10pt; font-weight:600; color:#800000;">))</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; color:#000000;">n</span><span style=" font-size:10pt; font-weight:600; color:#800000;">::</span><span style=" font-size:10pt; color:#000080;">Int32</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#800000;">$(</span><span style=" font-size:10pt; color:#000000;">esc</span><span style=" font-size:10pt; font-weight:600; color:#800000;">(</span><span style=" font-size:10pt; color:#000000;">T</span><span style=" font-size:10pt; font-weight:600; color:#800000;">))(</span><span style=" font-size:10pt; color:#000000;">n</span><span style=" font-size:10pt; font-weight:600; color:#800000;">::</span><span style=" font-size:10pt; color:#000080;">Integer</span><span style=" font-size:10pt; font-weight:600; color:#800000;">)</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; font-weight:600; color:#800000;">=</span><span style=" font-size:9pt; color:#000000;"> </span><span style=" font-size:10pt; color:#000000;">new</span><span style=" font-size:10pt; font-weight:600; color:#800000;">(</span><span style=" font-size:10pt; color:#000000;">n</span><span style=" font-size:10pt; font-weight:600; color:#800000;">)</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#99cc99;"><span style=" font-size:10pt; font-weight:600; color:#000000;">end</span></p></td></tr></table>
+<table style="-qt-table-type: frame; margin-top:1px; margin-bottom:1px; margin-left:1px; margin-right:1px;">
+<tr>
+<td style="border: none;"></td></tr></table></td></tr></table>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">You see that blocks are</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">1) from «if/for/while/quote» to «end» - not needed in tree,</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">2) from «function/macro» to «end» - needed in tree with name of function.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">Open «Lexer properties» dialog, goto «Rules» tab, here needed all items for blocks. You see such rules:</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt; font-weight:600;">Rule «keyword»</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">- to hilite keywords in bold.</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Properties» tab: for rule set «Block type» to «Tag detector». </li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Highlight» tab: set style «Id keyword» to hilite in bold (this style can be any with bold). </li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Conditions» tab: just paste word list into right editor, and set type «Id», and condition «Equal».</li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt; font-weight:600;">Rule «block end»</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">- to mark end of blocks by «end» keyword. «Properties» tab: set «Block type» to «Range end». «Conditions» tab: add some conditions: you see 2 conditions here:</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">0) type «Id», value «end», condition «Equal». Condition makes rule active for keyword.</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">1) type «Symbol», value «[», condition «Not equal». Condition is a tweak to disable rule, if token before «end» is bracket. It“s needed to not take «n = name[end]» (happens in lang).</li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">Now need to set starting rules for this end-rule: one block for tree, other block not for tree.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt; font-weight:600;">Rule «block»</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">- for blocks not in tree.</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Properties» tab: set «Block type» to «Range start», set «Range end condition» to name of rule above «block end».</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Text range» tab: just set 2 flags: «Display in tree» off, «Draw block staple» on.</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Conditions» tab: add condition with «Equal», type «Id», paste into editor list of keywords: «if/for/while/...»</li></ul>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt; font-weight:600;">Rule «block tree»</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">- for functions in tree.</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Properties» tab: same as before.</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Conditions» tab: same as before, list of keywords is «function/macro/...»</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Text range» tab: set 2 flags: «Display in tree» on, «Draw block staple» off.</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Text range» tab: we have rule for tree, so set </li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:72px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Name format string» to e.g. «%sz0» - means that tree shows all from token0 to end if line. Or you can write e.g. «%s0 %s-1» to show in tree 2 tokens.</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:72px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">«Collapsed text icon» - optional, this shown when you fold block in app with [-] icon. Also can write e.g. «function %s-1».</li>
+<li style=" font-size:11pt;" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></li>
+<li style=" font-size:11pt;" style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><br /></li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:20pt; font-weight:600;">How to fold blocks from «if» to «end if»</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">Sometimes needed to fold block with equal words: AppleScript needs:</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">if ... end if</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">for ... end for</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">repeat ... end repeat</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">on SomeName ... end SomeName</li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">This can be done, you need flag </span><span style=" font-size:11pt; font-weight:600;">«Require same ident»</span><span style=" font-size:11pt;">, in «Properties» tab for end-rule. This makes pair by equal tokens from begin-rule/ end-rule. E.g.</span></p>
+<ul style="margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; -qt-list-indent: 1;"><li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">token[0] in begin-rule, so set <span style=" font-weight:600;">«Identifier index»</span> to 0</li>
+<li style=" font-size:11pt;" style=" margin-top:0px; margin-bottom:0px; margin-left:4.66203e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;">equals to token[1] in end-rule, so set «Identifier index» to 1.</li></ul>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">HTML lexer uses same method for pair &lt;tag&gt;...&lt;/tag&gt;, it has &quot;Require same ident&quot; checked for end-rule.</span></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:11pt;">For AppleScript needed also tweak, that «end if» text cannot start new block «if». This can be done. Just set flag </span><span style=" font-size:11pt; font-weight:600;">«Cancel next rules»</span><span style=" font-size:11pt;"> for end-rule. (Rule must be upper in rules list, to skip next rules.)</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:6.95268e-310px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:11pt;"><br /></p></td></tr></table></body></html>
