@@ -1,4 +1,4 @@
-* [LexerIndentFolding.html](LexerIndentFolding.html)
+* [LexerConfig.html](LexerConfig.html)
 * [LexerIndentFolding.html](LexerIndentFolding.html)
 * [TutorialLexer1.html](TutorialLexer1.html)
 * [TutorialLexer2.html](TutorialLexer2.html)
